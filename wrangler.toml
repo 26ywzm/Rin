@@ -1,6 +1,6 @@
 name = "rin-server"
 main = "server/src/_worker.ts"   # Worker 入口文件
-compatibility_date = "2025-10-18"
+compatibility_date = "${COMPATIBILITY_DATE}"
 compatibility_flags = ["nodejs_compat"]  # <<< Wrangler v4 兼容 Node.js
 
 [vars]
