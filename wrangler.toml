@@ -1,11 +1,7 @@
 name = "rin-server"
 main = "server/src/_worker.ts"
 compatibility_date = "2025-10-18"
-compatibility_flags = ["nodejs_compat"]  # <<< 保留，启用 Node 内置模块兼容
-
-# <<< 新增，解决 @sinclair/typebox 编译报错
-[build]
-external = ["@sinclair/typebox"]
+compatibility_flags = ["nodejs_compat"]  # 保留 Node.js 内置模块兼容
 
 [vars]
 FRONTEND_URL = "http://localhost:5173"
