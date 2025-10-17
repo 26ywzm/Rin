@@ -1,7 +1,7 @@
 name = "rin-server"
-main = "server/src/_worker.ts"
+main = "server/src/_worker.ts"   # Worker 入口文件
 compatibility_date = "2025-10-18"
-compatibility_flags = ["nodejs_compat"]  # 保留 Node.js 内置模块兼容
+compatibility_flags = ["nodejs_compat"]  # <<< Wrangler v4 兼容 Node.js
 
 [vars]
 FRONTEND_URL = "http://localhost:5173"
