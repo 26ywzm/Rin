@@ -25,6 +25,9 @@ jobs:
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
+        
+      - name: Install Wrangler
+        run: npm install -g wrangler@3.5.0  # 指定旧版本 Wrangler，兼容 node_compat
 
       - name: Deploy
         env: # Or as an environment variable
