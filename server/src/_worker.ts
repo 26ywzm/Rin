@@ -10,17 +10,25 @@ import { rssCrontab } from "./services/rss";
 import { CacheImpl } from "./utils/cache";
 import { dbToken, envToken } from "./utils/di";
 
-// 临时扩展 execute 类型，解决前端 TS 报错
-export type DB = DrizzleD1Database<typeof schema> & {
-    execute?: any;
-}
+export type DB = DrizzleD1Database<typeof import("./db/schema")>
 
 export default {
     async fetch(
         request: Request,
         env: Env,
     ): Promise<Response> {
-        const db = drizzle(env.DB, { schema })
+        const db = drizzle(env.DB, { schema: schema })
+
+        // 自动建表
+        await db.execute(`
+          CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL,
+            password TEXT NOT NULL,
+            role TEXT DEFAULT 'user'
+          );
+        `);
+
         Container.set(envToken, env)
         Container.set(dbToken, db)
 
@@ -35,12 +43,24 @@ export default {
             .use(app())
             .handle(request)
     },
+
     async scheduled(
         _controller: ScheduledController | null,
         env: Env,
         ctx: ExecutionContext
     ) {
-        const db = drizzle(env.DB, { schema })
+        const db = drizzle(env.DB, { schema: schema })
+
+        // 自动建表
+        await db.execute(`
+          CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL,
+            password TEXT NOT NULL,
+            role TEXT DEFAULT 'user'
+          );
+        `);
+
         Container.set(envToken, env)
         Container.set(dbToken, db)
 
