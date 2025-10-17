@@ -52,4 +52,5 @@ jobs:
         run: |
           cd Rin/
           bun install --frozen-lockfile
+          bun add strip-indent   # 临时安装缺失依赖
           bun scripts/migrator.ts
