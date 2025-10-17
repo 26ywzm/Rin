@@ -13,38 +13,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ------------------------
+      # 1️⃣ Node.js 环境
+      # ------------------------
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
+      # ------------------------
+      # 2️⃣ Clone 仓库
+      # ------------------------
       - name: Clone Rin repository
         uses: actions/checkout@v4
         with:
           path: Rin
 
+      # ------------------------
+      # 3️⃣ 安装 Bun
+      # ------------------------
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
 
-      - name: Install Node dependencies
-        run: |
-          cd Rin/
-          npm install --legacy-peer-deps
-
-      - name: Deploy with Wrangler
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: "4.43.0"  # 兼容 node_compat 的 Wrangler 版本
-          command: "deploy"
-          workingDirectory: Rin
+      # ------------------------
+      # 4️⃣ 安装依赖 & 运行 migrator
+      # ------------------------
+      - name: Run migrator with Bun  # <<< 新增/修改
         env:
-          # 保证 Node 执行
-          PATH: /opt/hostedtoolcache/node/22.20.0/x64/bin:${{ env.PATH }}
-
-      - name: Run migrator with Bun
-        env: # Or as an environment variable
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           S3_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
@@ -67,6 +62,21 @@ jobs:
           RSS_DESCRIPTION: ${{ vars.RSS_DESCRIPTION }}
         run: |
           cd Rin/
-          bun install --frozen-lockfile  # <<< 保留，用于 Bun 脚本
-          bun add strip-indent           # <<< 临时安装缺失依赖
-          bun scripts/migrator.ts       # <<< 运行你的脚本
+          bun install --frozen-lockfile
+          bun add strip-indent       # <<< 临时安装缺失依赖
+          bun add @sinclair/typebox  # <<< 安装外部依赖，避免 wrangler 编译报错
+          bun scripts/migrator.ts
+
+      # ------------------------
+      # 5️⃣ 部署 Cloudflare Worker
+      # ------------------------
+      - name: Deploy with Wrangler
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.43.0"
+          command: "deploy"
+          workingDirectory: Rin
+        env:
+          PATH: /opt/hostedtoolcache/node/22.20.0/x64/bin:${{ env.PATH }}
