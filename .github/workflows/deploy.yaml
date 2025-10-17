@@ -34,6 +34,9 @@ jobs:
           wranglerVersion: "4.43.0"  # 兼容 node_compat 的 Wrangler 版本
           command: "deploy"
           workingDirectory: Rin
+        env:
+          # 保证 Node 执行
+          PATH: /opt/hostedtoolcache/node/22.20.0/x64/bin:${{ env.PATH }}
 
       - name: Deploy
         env: # Or as an environment variable
