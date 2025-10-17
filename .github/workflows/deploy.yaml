@@ -13,34 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. 设置 Node.js
+      # 1️⃣ 设置 Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      # 2. Clone 仓库
+      # 2️⃣ 拉取代码
       - name: Clone Rin repository
         uses: actions/checkout@v4
         with:
           path: Rin
 
-      # 3. 安装依赖 (npm)
-      - name: Install dependencies
+      # 3️⃣ 安装 Node 依赖（给 Wrangler 用）
+      - name: Install Node dependencies
         run: |
           cd Rin
           npm ci
 
-      # 4. 运行 migrator 脚本 (Bun)
-      - name: Run migrator script
-        uses: oven-sh/setup-bun@v1
-      - name: Execute migrator
-        run: |
-          cd Rin
-          bun add strip-indent
-          bun scripts/migrator.ts
-
-      # 5. Deploy Worker (Wrangler + Node)
+      # 4️⃣ 安装 Wrangler 并部署 Worker
       - name: Deploy with Wrangler
         uses: cloudflare/wrangler-action@v3
         with:
@@ -49,3 +40,38 @@ jobs:
           wranglerVersion: "4.43.0"
           command: "deploy"
           workingDirectory: Rin
+        # 用 Node 的环境，不使用 Bun
+        env:
+          PATH: /opt/hostedtoolcache/node/22.20.0/x64/bin:${{ env.PATH }}
+
+      # 5️⃣ 设置 Bun 并运行你的 migrator
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install Bun dependencies & run migrator
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          S3_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+          S3_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          RIN_GITHUB_CLIENT_ID: ${{ secrets.RIN_GITHUB_CLIENT_ID }}
+          RIN_GITHUB_CLIENT_SECRET: ${{ secrets.RIN_GITHUB_CLIENT_SECRET }}
+          DB_NAME: ${{ vars.DB_NAME }}
+          WORKER_NAME: ${{ vars.WORKER_NAME }}
+          FRONTEND_URL: ${{ vars.FRONTEND_URL }}
+          S3_ACCESS_HOST: ${{ vars.S3_ACCESS_HOST }}
+          S3_BUCKET: ${{ vars.S3_BUCKET }}
+          S3_CACHE_FOLDER: ${{ vars.S3_CACHE_FOLDER }}
+          S3_ENDPOINT: ${{ vars.S3_ENDPOINT }}
+          S3_FOLDER: ${{ vars.S3_FOLDER }}
+          S3_REGION: ${{ vars.S3_REGION }}
+          S3_FORCE_PATH_STYLE: ${{ vars.S3_FORCE_PATH_STYLE }}
+          WEBHOOK_URL: ${{ vars.WEBHOOK_URL }}
+          RSS_TITLE: ${{ vars.RSS_TITLE }}
+          RSS_DESCRIPTION: ${{ vars.RSS_DESCRIPTION }}
+        run: |
+          cd Rin/
+          bun install --frozen-lockfile
+          bun add strip-indent   # 临时安装缺失依赖
+          bun scripts/migrator.ts
