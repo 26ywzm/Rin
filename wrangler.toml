@@ -1,7 +1,7 @@
 name = "rin-server"
-main = "server/src/_worker.ts"
-compatibility_date = "2024-05-29"
-compatibility_flags = ["nodejs_compat"]
+main = "server/src/_worker.ts"  # Worker 入口文件
+compatibility_date = "2025-10-18"  # 建议用当天日期
+compatibility_flags = ["nodejs_compat"]  # 启用 Node 内置模块兼容
 
 [vars]
 FRONTEND_URL = "http://localhost:5173"
@@ -20,3 +20,6 @@ RSS_DESCRIPTION = "Development Environment"
 binding = "DB"
 database_name = "rin"
 database_id = "YourDatabaseID"
+
+[triggers]
+crons = ["*/20 * * * *"]
