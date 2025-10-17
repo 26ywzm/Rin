@@ -32,7 +32,8 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: "4.43.0"  # 兼容 node_compat 的 Wrangler 版本
-          command: "deploy server/src/_worker.ts"
+          command: "deploy"
+          working-directory: Rin
 
       - name: Deploy
         env: # Or as an environment variable
