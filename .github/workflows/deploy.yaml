@@ -26,6 +26,11 @@ jobs:
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
 
+      - name: Install Node dependencies
+        run: |
+          cd Rin/
+          npm install --legacy-peer-deps
+
       - name: Deploy with Wrangler
         uses: cloudflare/wrangler-action@v3
         with:
@@ -38,7 +43,7 @@ jobs:
           # 保证 Node 执行
           PATH: /opt/hostedtoolcache/node/22.20.0/x64/bin:${{ env.PATH }}
 
-      - name: Deploy
+      - name: Run migrator with Bun
         env: # Or as an environment variable
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -62,5 +67,6 @@ jobs:
           RSS_DESCRIPTION: ${{ vars.RSS_DESCRIPTION }}
         run: |
           cd Rin/
-          bun install --frozen-lockfile
-          bun add strip-indent   # 临时安装缺失依赖
+          bun install --frozen-lockfile  # <<< 保留，用于 Bun 脚本
+          bun add strip-indent           # <<< 临时安装缺失依赖
+          bun scripts/migrator.ts       # <<< 运行你的脚本
