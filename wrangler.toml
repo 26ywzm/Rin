@@ -19,7 +19,7 @@ RSS_DESCRIPTION = "Development Environment"
 [[d1_databases]]
 binding = "DB"
 database_name = "rin"
-database_id = "YourDatabaseID"
+database_id = "cb3efb10-abfb-4d70-ad5a-187b2d7c6fef"
 
 [triggers]
 crons = ["*/20 * * * *"]
