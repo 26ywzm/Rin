@@ -26,8 +26,12 @@ jobs:
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
         
-      - name: Install Wrangler
-        run: npm install -g wrangler@3.5.0  # 指定旧版本 Wrangler，兼容 node_compat
+      - name: Deploy with Wrangler
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "2.20.0"  # 兼容 node_compat 的 Wrangler 版本
 
       - name: Deploy
         env: # Or as an environment variable
