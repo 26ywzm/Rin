@@ -10,64 +10,94 @@ import { rssCrontab } from "./services/rss";
 import { CacheImpl } from "./utils/cache";
 import { dbToken, envToken } from "./utils/di";
 
-export type DB = DrizzleD1Database<typeof schema> & { execute?: any };
+export type DB = DrizzleD1Database<typeof schema> & {
+    execute?: any;
+}
 
-async function initDatabase(db: DB) {
+// 初始化数据库表和默认 admin 用户
+async function initDB(db: DB) {
     // 创建 users 表
     await db.execute(`
-    CREATE TABLE IF NOT EXISTS users (
-        id TEXT PRIMARY KEY,
-        github_id TEXT,
-        username TEXT,
-        avatar_url TEXT,
-        role TEXT DEFAULT 'user',
-        permission TEXT DEFAULT 'user',
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );`);
+        CREATE TABLE IF NOT EXISTS users (
+            id TEXT PRIMARY KEY,
+            github_id TEXT,
+            username TEXT,
+            avatar_url TEXT,
+            role TEXT DEFAULT 'user',
+            permission INTEGER DEFAULT 1,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
 
-    // 创建 feeds 表
+    // 你可以根据 server/sql/*.sql 的顺序添加其他表
     await db.execute(`
-    CREATE TABLE IF NOT EXISTS feeds (
-        id INTEGER PRIMARY KEY,
-        alias TEXT,
-        title TEXT,
-        content TEXT NOT NULL,
-        summary TEXT DEFAULT '',
-        listed INTEGER DEFAULT 1,
-        draft INTEGER DEFAULT 1,
-        uid TEXT NOT NULL,
-        created_at INTEGER DEFAULT (unixepoch()),
-        updated_at INTEGER DEFAULT (unixepoch())
-    );`);
-
-    // 创建其他表（feed_hashtags, comments, hashtags, friends 等）
-    await db.execute(`
-    CREATE TABLE IF NOT EXISTS feed_hashtags (
-        feed_id INTEGER NOT NULL,
-        hashtag_id INTEGER NOT NULL,
-        created_at INTEGER DEFAULT (unixepoch()),
-        updated_at INTEGER DEFAULT (unixepoch())
-    );`);
+        CREATE TABLE IF NOT EXISTS feeds (
+            id INTEGER PRIMARY KEY,
+            alias TEXT,
+            title TEXT,
+            content TEXT NOT NULL,
+            summary TEXT DEFAULT '',
+            listed INTEGER DEFAULT 1,
+            draft INTEGER DEFAULT 1,
+            uid TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
 
     await db.execute(`
-    CREATE TABLE IF NOT EXISTS comments (
-        id INTEGER PRIMARY KEY NOT NULL,
-        feed_id INTEGER NOT NULL,
-        user_id TEXT NOT NULL,
-        content TEXT NOT NULL,
-        created_at INTEGER DEFAULT (unixepoch()),
-        updated_at INTEGER DEFAULT (unixepoch())
-    );`);
+        CREATE TABLE IF NOT EXISTS hashtags (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
 
-    // ...可根据需要继续添加 moments, visits, info, friends 等表
+    await db.execute(`
+        CREATE TABLE IF NOT EXISTS feed_hashtags (
+            feed_id INTEGER NOT NULL,
+            hashtag_id INTEGER NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
 
-    // 确保第一个用户为 admin
-    const users = await db.execute(`SELECT id FROM users LIMIT 1`);
-    if (users.length === 0) {
+    await db.execute(`
+        CREATE TABLE IF NOT EXISTS comments (
+            id INTEGER PRIMARY KEY,
+            feed_id INTEGER NOT NULL,
+            user_id TEXT NOT NULL,
+            content TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
+
+    await db.execute(`
+        CREATE TABLE IF NOT EXISTS friends (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            desc TEXT,
+            avatar TEXT,
+            url TEXT,
+            uid TEXT NOT NULL,
+            accepted INTEGER DEFAULT 0,
+            health TEXT DEFAULT '',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
+
+    // 插入默认 admin 用户，如果还没有
+    const adminExists = await db.execute(`SELECT COUNT(*) as count FROM users WHERE role='admin'`);
+    const count = adminExists?.results?.[0]?.count || 0;
+    if (count === 0) {
         await db.execute(`
-            INSERT INTO users (id, username, role, permission)
-            VALUES ('1', 'admin', 'admin', '1')
+            INSERT INTO users (id, username, role, permission, created_at)
+            VALUES ('1', 'admin', 'admin', 1, CURRENT_TIMESTAMP)
         `);
+        console.log('默认 admin 用户已创建: username=admin, role=admin');
     }
 }
 
@@ -78,7 +108,7 @@ export default {
         Container.set(dbToken, db);
 
         // 初始化数据库
-        await initDatabase(db);
+        await initDB(db);
 
         const exist = Container.has("cache");
         if (!exist) {
