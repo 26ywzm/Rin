@@ -1,11 +1,6 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - dev
-      - main
-      - fix/*
   workflow_dispatch:
 
 jobs:
