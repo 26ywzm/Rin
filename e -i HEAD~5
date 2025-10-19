@@ -1,0 +1,305 @@
+[33m2ab688f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m, [m[1;31morigin/HEAD[m[33m)[m Update wrangler.toml
+[33m7d7b55c[m Update wrangler.toml
+[33mf681288[m Update wrangler.toml
+[33ma29a82d[m Update wrangler.toml
+[33mf11bd60[m Update deploy.yaml
+[33m95e3c65[m Update wrangler.toml
+[33m01c0e58[m Refactor database initialization and caching logic
+[33m0b51383[m Refactor initDatabase function and update schemas
+[33m09eb164[m Update _worker.ts
+[33m3745daf[m Update wrangler.toml
+[33md5e2651[m Update _worker.ts
+[33m5092688[m Update _worker.ts
+[33m284cd52[m Update _worker.ts
+[33mb26f96e[m Add JWT_SECRET to wrangler.toml
+[33mbf8cf2f[m Add GitHub client ID and secret to configuration
+[33m2e76214[m Refactor initContainer and enhance error handling
+[33m29b7646[m Update _worker.ts
+[33m2720338[m Update compatibility date in wrangler.toml
+[33m18550db[m Update wrangler.toml
+[33m3fef68c[m Update database_id in wrangler.toml
+[33m34d6465[m Update deploy.yaml
+[33mc8d98b5[m Update wrangler.toml
+[33m1682502[m Refactor deploy workflow steps and comments
+[33me9146bd[m Update wrangler.toml
+[33mf23b6f2[m Refactor deploy workflow to use Bun
+[33m0563d6e[m Update wrangler.toml
+[33me80ebfe[m Add Node dependency installation step to deploy workflow
+[33m1dff980[m Update deploy.yaml
+[33m0cb9f2c[m Enhance deploy.yaml with comments and Bun setup
+[33m65275c6[m Update deploy.yaml
+[33mf54bd72[m Update deploy.yaml
+[33me0d888b[m Update wrangler.toml
+[33mb54c154[m Update wrangler.toml with compatibility flags and vars
+[33md575e3f[m Update deploy.yaml
+[33mb12b045[m Update deploy.yaml
+[33mdd1939b[m Add initial configuration for rin-server
+[33m1b452be[m Modify deploy command and set working directory
+[33m9168ba4[m Specify deploy command in workflow
+[33m9404e22[m Update deploy.yaml
+[33m873d7c0[m Update deployment workflow to use Wrangler action
+[33m6c405f9[m Update deploy.yaml
+[33mab9271a[m Update compatibility settings in wrangler.example.toml
+[33me2719e4[m Update deploy.yaml
+[33me823d9c[m Add cursor pointer to Table of Contents links (#385)
+[33m0ae90ca[m docs: update documentation url
+[33mcead004[m docs: update documentation url
+[33mefc27c2[m feat: Implement automatic UI scaling for high-DPI displays (#370)
+[33meb95ddf[m feat: add error page and router permission handling (#358)
+[33m7f062e8[m style(moments): adjust moments style & remove font cdn
+[33med480e2[m feat: add Moments feature (#356)
+[33m8feb0ad[m feat: Add sorting for friend list (#341)
+[33mf794ea4[m fix: locked version
+[33m5cce762[m chore(deps-dev): bump vitest from 1.3.0 to 1.6.1 (#310)
+[33m4a763e5[m fix: move getEnv into function for proper initialization (#309)
+[33medbcac5[m feat: Add additional translations and improve favicon update logic (#308)
+[33m5c2d000[m style: adjust margin
+[33m3a68b55[m fix: change adjacent sort strategy by created time
+[33m13b077d[m feat: Add adjacent feeds feature (Closes #202) (#293)
+[33m37205bc[m fix: #223
+[33m9523a69[m feat: add i18n(zh-tw) support (and rename 'zh' as 'zh-CN') (#290)
+[33mbd0730b[m fix: #268 字段名称与变量名称冲突导致 cpu exceeded time Signed-off-by: Xeu <thankrain@qq.com>
+[33mab6a159[m fix: search permission (#268)
+[33mc3a3d16[m chore: add crontab debug
+[33med46795[m feat: 增加评论与登录入口开关
+[33mbeea16f[m ci: add fix/* branch deploy support
+[33md0eeaf0[m chore: format frontendUrl
+[33m8450037[m fix: rss crontab exception (#271)
+[33mea2d8e8[m docs: add discord & telegram
+[33m6cea860[m fix #262 (#266)
+[33m404c4a9[m fix: rss crontab exception (#265)
+[33maacc105[m fix: lock elysia-oauth2 version (#239)
+[33m7bdaf76[m feat: use Mermaid (#237)
+[33mf12910d[m fix: add scroll support for index
+[33mf6151e8[m fix: processing S3_ACCESS_HOST configuration without protocol header obtained in rss acquisition #228 (#229)
+[33maacb021[m fix: new database migration strategy (#219)
+[33mc827475[m Merge pull request #218 from dongguaguaguagua/main
+[33med174b7[m formula overflow
+[33mcc6611d[m fix: broken seo workflow (#215)
+[33m5af550b[m Merge pull request #214 from openRin/dev
+[33m775f46c[m chore: remove commented code
+[33mb67f61b[m feat: add friend link apply notify
+[33m200631c[m chore: change useMemo to useCallback
+[33m361a8ea[m fix: index can not open in mobile
+[33m73d85f8[m fix: remove memo in friend
+[33m67e8189[m fix: flash header
+[33md5f4ef7[m fix: flash friend item
+[33m4d50a8f[m fix: writing publish alert block
+[33m16cee03[m feat: new login ui
+[33m72ae3c2[m chore: replace all bg-active to bg-button
+[33m1492329[m feat: add deploy error tips
+[33m01ddfad[m fix: feed_card x space for attrs
+[33m77f90d8[m Merge pull request #211 from openRin/dev
+[33m16da5b2[m feat: add custom footer support
+[33m155df16[m chore: refactor all != to !==
+[33mb14bc5f[m fix: waiting for hashtags
+[33mfa1e205[m fix: false config not work
+[33m63902cd[m fix: first top failed
+[33mf64d86a[m docs: change repo path
+[33md05a21a[m test: lock cors
+[33m709fdd1[m Merge pull request #208 from openRin/dev
+[33mdce52fa[m fix: lockb
+[33ma2be324[m ci: add lockb for reproducible
+[33m108507f[m fix: lock wrangler version to 3.63.1
+[33ma476c45[m fix: error top default
+[33m2e8f44c[m fix: lost comments
+[33m26e4006[m fix: cors
+[33mb3907cf[m fix: sql
+[33mfc67dfd[m style: change edit button text color
+[33m547109e[m Merge pull request #206 from openRin/139-feature-request
+[33m690a21e[m feat: add top support
+[33m20af499[m feat: add search support
+[33m2aebc6c[m Merge pull request #203 from OXeu/dev
+[33md90b390[m chore: Merge branch 'main' into dev
+[33m6a0f036[m fix: do not prerequest default favicon
+[33mb6d1072[m fix: broken image lightbox
+[33m333b52a[m fix: scroll bias in index jumps
+[33mccf1d6c[m Merge pull request #199 from SliverKeigo/main
+[33mac72bfd[m fix: issue #198
+[33m5ed8ceb[m fix: empty index
+[33me401d68[m Merge pull request #197 from OXeu/dev
+[33m7336fef[m fix: bad behavior index
+[33mae53414[m fix: hashtag layout & button text-nowrap
+[33m5459700[m feat: Better judgment of the conditions for applying images and the expression of in-line images. (#194)
+[33m5691fb1[m feat: add i18n support for visit count
+[33md2978de[m Merge pull request #196 from OXeu/dev
+[33mc84fd0f[m chore: remove debug msg
+[33m212b499[m fix: get ip failed
+[33m85f3081[m fix: do not skip create table when exists
+[33md1528f6[m chore: add debug
+[33ma26c917[m feat: add visit count support
+[33m1b0b5bb[m Merge pull request #195 from OXeu/dev
+[33m3116cec[m feat: add custom favicon support
+[33m9a3f44e[m feat: hide code block copy button defaultly
+[33mb1ec476[m fix: default timeago
+[33m937619b[m Merge pull request #193 from OXeu/dev
+[33mc204f5d[m feat: add image lightbox
+[33m72077d6[m Merge pull request #192 from OXeu/dev
+[33m60c6f40[m fix: feed card offset
+[33m51485ee[m Merge pull request #191 from OXeu/dev
+[33m58eff34[m feat: new alert support
+[33m9a555a0[m Merge pull request #190 from OXeu/dev
+[33m1e61170[m feat: add hashtag page support
+[33meab19a0[m feat: add copy support for code block (#188)
+[33mee88254[m chore: Merge branch 'dev'
+[33m3b757b9[m style: better hashtag style
+[33ma01c05f[m feat: add copy support for code block (#188)
+[33mbece0a8[m fix: useCache default value (#187)
+[33m5f45828[m fix: missing i18n time format
+[33m6e465ab[m feat: add useCache hook
+[33m990795e[m fix: typo
+[33m2f24ac6[m feat: add callout support
+[33mf48ca0e[m fix: can not comment on alias feed
+[33mdea6ee3[m fix: incorrect style (#182)
+[33m5a94a2c[m feat: add comparison
+[33me627323[m feat: add paste support
+[33mf3edf35[m fix: bad toc highlight
+[33m8b276d4[m fix: toc (#176)
+[33m6df5ca6[m fix: missing file type
+[33m0f6b5d8[m fix: undefined dataTransfer
+[33mfee2161[m style: improve login button contrast
+[33m76c21af[m fix: error debounce cancel
+[33m5e12afe[m feat: better writing UI
+[33me8ecc1a[m fix: unable to jump to dest by index
+[33m73e8da1[m feat: new monaco editor (#172)
+[33mcf2add3[m fix: correct i18n.
+[33m4d84cfa[m feat: more satisfying interface and some hover effect
+[33m57ce946[m fix: alias cache clear policy
+[33m16215ad[m fix: error cache key
+[33m0ecd0a4[m chore: remove unused debug message
+[33mf414894[m fix: error hook & bad cache load logic
+[33m7f1a05b[m feat: add i18n(ja) support
+[33m847e58d[m feat: add i18n support
+[33mb67277d[m fix: cache update failed
+[33m17b378d[m fix: missing next page (#152)
+[33m8cf55b8[m feat: add created time support (#151)
+[33m8e3d7ed[m fix: bad setting opearation fallback action
+[33m3d6cac3[m feat: add friend link apply support (#148)
+[33m1961cb0[m feat: add dynamic config support (#145)
+[33m0f9d727[m feat: adjust writing layout for mobile screen
+[33m2b98368[m feat: migrate render to react-markdown & add katex support (#143)
+[33mb0611da[m docs: fix broken hook path
+[33m74f5b3b[m Update DEPLOY.md
+[33m5d31d7c[m feat: add WordPress import support (#122)
+[33m9cae1b5[m fix: #117 (#118)
+[33m45935e9[m fix: keep loading when no friend in friend page (#113)
+[33m96afff3[m docs: update CONTRIBUTING_zh_CN.md and CONTRIBUTING.md (#112)
+[33m2f54f94[m ci: bump bun to v1.1.13 (#111)
+[33m8f52bcd[m Update DEPLOY.md (#110)
+[33m77e0d8e[m ci: reduce seo running frequency (#107)
+[33me446474[m fix: missing env FRONTEND_URL for render.ts (#106)
+[33mc1c9d73[m fix: error font path (#104)
+[33m57f9e89[m chore: fix some typos and remove unnecessary references (#102)
+[33m8b9741d[m fix: remove ani-show for writing page
+[33m37d096d[m fix: reduce the scope of link underline styles
+[33m23eb651[m feat: add rss link support at footer
+[33mb0845db[m style: adjust some small style of case
+[33mb394af9[m fix: Update CommentItem component to break words in the content
+[33md332922[m feat: Add animation when showing elements in various components
+[33mb31f99f[m pref: Optimize page loading speed
+[33m2a6cba0[m fix: update writing page style
+[33mf5378c5[m fix: update alias page style
+[33m56c16c7[m fix: TOC text color in dark mode (#89)
+[33mf4e01b5[m feat: Add rounded corners and center alignment for images in markdown (#88)
+[33mba2be14[m feat: introduce more fonts for better display (#87)
+[33m8e37974[m feat: Update Waiting component props in multiple files (#86)
+[33m0959d1a[m feat: add TOC support (#85)
+[33m8f43c9e[m feat: Add drag and drop image overlay hint
+[33md687afb[m fix: strange modal behavior
+[33m5259cf4[m feat: add friend edit and delete support
+[33m486a94e[m fix: transform markdown to html for rss (#82)
+[33m0b51e6c[m feat: add rss support (#81)
+[33mc3c9f28[m ci: Update deploy.yaml to include 'dev' branch in the push trigger
+[33m9deae90[m fix: forbidden scroll when menu open
+[33m1196485[m fix: buttom layer element is clickable when menu open
+[33m4745b04[m feat: support menu on mobile
+[33m554af74[m feat: Add more meta tags for SEO
+[33m4defbd8[m feat: reduce certain failed profile requests
+[33m16ce15b[m chore: Update favicon size
+[33m88c1761[m fix: update WEBHOOK_URL in deploy.yaml
+[33m5c7bea2[m fix: add missing puppeteer as a dev dependency
+[33m03cc686[m fix: missing WEBHOOK_URL
+[33m389f932[m fix: broken loading in article page
+[33mf9636d8[m fix: unused forcePathStyle (#68)
+[33m5a24095[m Add S3_FORCE_PATH_STYLE (#67)
+[33m24d0a21[m fix: add puppeteer back (#66)
+[33m9b23ab6[m feat: add popup support
+[33m46af1c2[m style: Update comment layout and styling
+[33m5acdcf9[m fix: S3_ACCESS_HOST error handling in seo.ts
+[33m32eeb56[m fix: can not start server when no s3 config
+[33m9559924[m fix: Add missing RIN_GITHUB_CLIENT_ID and RIN_GITHUB_CLIENT_SECRET to deploy.yaml
+[33me7bb8d1[m docs: add english README.md
+[33mf597ee0[m chore: Update S3 configuration in migrator.ts
+[33ma9bed93[m chore: add more debug message for deploy
+[33m7297eba[m docs: Add frontend and backend address instructions to DEPLOY.md
+[33me9c3284[m chore: Update page title in index.html and main.tsx
+[33m73c1edc[m fix: Update user service to handle missing username
+[33mcf54f48[m docs: Update README.md
+[33m0db4f71[m fix: can not add env start with `GITHUB_`
+[33m6592e4d[m feat: add timeline support
+[33m9593222[m docs: add troubleshooting
+[33m1fdae07[m docs: update deploy doc
+[33m059344a[m docs: Update issue templates
+[33m948404e[m docs: add migration guide
+[33m9cbd104[m docs: add SEO.md to README.md
+[33me120d5a[m docs: Update SEO.md
+[33m3ea4d40[m fix: Fix link filtering logic in fetchPage function
+[33md77cb05[m chore: Update SEO workflow to include S3 secrets and deploy step
+[33ma08eb75[m feat: seo friendly (#27)
+[33m55b538b[m fix: rename herf to href
+[33m5ef770c[m chore: fix typo & remove unnecessary semicolon
+[33mbfdc08d[m fix: typo
+[33m8ffa75e[m docs: update README list numbering
+[33ma1e223b[m fix: invalid page for spider
+[33mc69700e[m fix: feed fetching logic and add support for different feed types
+[33m8e23d46[m feat: Optimize feed fetching logic and add support for different feed types
+[33mdd33b7f[m feat: Add pagination support
+[33m20a5ab0[m chore: Update publish button shadow color for mobile view
+[33m679102f[m docs: Update README.md to use responsive image for Star History Chart
+[33m7fc5ba9[m docs: add Simplified Chinese CONTRIBUTING.md support.
+[33m167c6f1[m docs: add issues template support
+[33m25cfe90[m docs: Add CONTRIBUTING.md and CODE_OF_CONDUCT.md
+[33mcb174db[m chore: add check script
+[33m3e9c7d1[m chore: move wrangler.example.toml to root
+[33mc670039[m chore: Add "check" script to package.json
+[33m643fafb[m ci: move migrator.ts to scripts folder
+[33m2986294[m chore: Update migrator.ts to use environment variables for default values
+[33me0d1909[m chore: Update migrator.ts to use environment variables for default values
+[33m57ff8cb[m ci: add vars in deploy.yaml
+[33mfb3f2ee[m docs: Update README.md to include GitHub Actions Workflow Status badge
+[33ma7dbaf3[m docs: Update DEPLOY.md
+[33m260a353[m ci: add secret for deploy.yaml
+[33me27d81d[m chore: Update deploy.yaml to use absolute paths for bun commands
+[33mff4aebc[m ci: Update deploy.yaml to use absolute paths for bun commands
+[33m5579bc6[m ci: Update deploy.yaml to use absolute paths for bun commands
+[33m7b7b19f[m ci: try fix no such file
+[33m3a30337[m ci: try fix bun not found
+[33m1e69c17[m feat: Update bashrc sourcing in deploy.yaml and use environment variables in migrator.ts
+[33m4bafd4a[m ci: fix indent
+[33m51542cc[m chore: Update Node.js setup action to version 3
+[33m91ff93d[m fix: rename deploy,yaml to deploy.yaml
+[33m527fada[m feat: add auto deploy by Github Action support
+[33md2fe281[m chore: Clean code (#11)
+[33m1b26d00[m feat: Add star history chart & bandage to README.md
+[33m3282ac0[m docs: Add environment variable documentation for frontend and backend
+[33me597959[m docs: Add deployment documentation
+[33mcbd0882[m refactor: Ignore notify when missing webhook URL
+[33m96c2a79[m fix: set default theme mode to 'system' when retrieving from local storage
+[33m49273a3[m fix: reload does not apply theme mode
+[33mb750ba0[m fix: system theme mode does not work
+[33ma7f09a7[m clean: remove unused import
+[33mf084767[m feat: Add dark mode switch & footer support
+[33mb7770ce[m feat: add dark mode support
+[33m5504dac[m docs: Update Header Image
+[33m9cefb01[m fix: block all feeds in guest mode
+[33mc12adb8[m fix: show all feeds in admin mode default
+[33mc8c2cca[m refactor: Fix data loading issue in Feed component
+[33m185cf2f[m refactor: Update header component to improve user avatar display
+[33mc28dc91[m chore: Update package.json scripts to include "check" command
+[33m1533395[m chore: Update FeedsPage component to use listState instead of separate state variables
+[33m0106f45[m refactor: Improve comment layout in Feed component
+[33mda7e381[m feat: Add image upload functionality to MDEditor
+[33mf2540ae[m refactor: Update Feed component to fix data loading issue
+[33mf78c159[m feat: Add react-loading library for better loading experience
+[33me217397[m Merge branch 'main' of github.com:OXeu/Rin
+[33m5720278[m feat: Update environment variables and add S3 folder configuration
